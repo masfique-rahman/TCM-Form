@@ -1,1 +1,1776 @@
+<!DOCTYPE html>
+<html lang="bn">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ত্রৈমাসিক অগ্রগতি প্রতিবেদন</title>
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+
+            <img
+                src="logo.png"
+                alt="TCM Logo"
+            >
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <h2>
+                টিসিএম এডুকেশন স্কলারশিপ প্রোগ্রাম
+            </h2>
+
+            <span>
+                শিক্ষার্থীদের ত্রৈমাসিক অগ্রগতি প্রতিবেদন
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="secure">
+
+        Secure Form
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="wrapper">
+
+
+<!-- =====================================================
+     FORM CARD
+===================================================== -->
+
+<section class="card form-card">
+
+
+    <!-- FORM HEADING -->
+
+    <div class="form-heading">
+
+        <h1>
+            ত্রৈমাসিক অগ্রগতি প্রতিবেদন
+        </h1>
+
+        <p>
+            নিচের তথ্যগুলো সঠিকভাবে পূরণ করুন।
+            আপনার দেওয়া তথ্যের ভিত্তিতে একটি A4
+            আকারের প্রতিবেদন তৈরি হবে।
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         REPORTING PERIOD
+    ================================================== -->
+
+    <div class="period-box">
+
+        <div class="period-heading">
+
+            <span class="period-number">
+                ✓
+            </span>
+
+            <div>
+
+                <strong>
+                    কোন ৩ মাসের প্রতিবেদন পূরণ করছেন?
+                </strong>
+
+                <small>
+                    একটি নির্বাচন করুন
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="radio-group">
+
+
+            <label class="radio-option">
+
+                <input
+                    type="radio"
+                    name="reporting_period"
+                    value="জানুয়ারি – মার্চ"
+                    required
+                >
+
+                <span class="custom-radio"></span>
+
+                <span>
+                    জানুয়ারি – মার্চ
+                </span>
+
+            </label>
+
+
+
+            <label class="radio-option">
+
+                <input
+                    type="radio"
+                    name="reporting_period"
+                    value="এপ্রিল – জুন"
+                >
+
+                <span class="custom-radio"></span>
+
+                <span>
+                    এপ্রিল – জুন
+                </span>
+
+            </label>
+
+
+
+            <label class="radio-option">
+
+                <input
+                    type="radio"
+                    name="reporting_period"
+                    value="জুলাই – সেপ্টেম্বর"
+                >
+
+                <span class="custom-radio"></span>
+
+                <span>
+                    জুলাই – সেপ্টেম্বর
+                </span>
+
+            </label>
+
+
+
+            <label class="radio-option">
+
+                <input
+                    type="radio"
+                    name="reporting_period"
+                    value="অক্টোবর – ডিসেম্বর"
+                >
+
+                <span class="custom-radio"></span>
+
+                <span>
+                    অক্টোবর – ডিসেম্বর
+                </span>
+
+            </label>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FORM
+    ================================================== -->
+
+    <form
+        id="contactForm"
+        enctype="multipart/form-data"
+    >
+
+
+        <!-- =================================================
+             SECTION 01
+        ================================================== -->
+
+        <div class="section-title">
+
+            <span class="section-number">
+                ০১
+            </span>
+
+            ব্যক্তিগত তথ্য
+
+        </div>
+
+
+
+        <!-- QUESTION 1 -->
+
+        <div class="field">
+
+            <label for="name">
+
+                ১। শিক্ষার্থীর নাম
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="student_name"
+                placeholder="শিক্ষার্থীর পূর্ণ নাম লিখুন"
+                required
+            >
+
+        </div>
+
+
+
+        <!-- QUESTION 2 -->
+
+        <div class="field">
+
+            <label for="institution">
+
+                ২। বর্তমান শিক্ষা প্রতিষ্ঠান
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="text"
+                id="institution"
+                name="institution"
+                placeholder="বর্তমান শিক্ষা প্রতিষ্ঠানের নাম"
+                required
+            >
+
+        </div>
+
+
+
+        <!-- QUESTION 3 -->
+
+        <div class="field">
+
+            <label>
+
+                ৩। শিক্ষা প্রতিষ্ঠান প্রধান /
+                বিভাগীয় প্রধান / শ্রেণি শিক্ষক
+
+            </label>
+
+
+            <div class="sub-grid">
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="teacherName"
+                    >
+                        নাম
+                    </label>
+
+                    <input
+                        type="text"
+                        id="teacherName"
+                        name="teacher_name"
+                        placeholder="নাম"
+                    >
+
+                </div>
+
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="teacherPhone"
+                    >
+                        মোবাইল নম্বর
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="teacherPhone"
+                        name="teacher_phone"
+                        placeholder="মোবাইল নম্বর"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 4 -->
+
+        <div class="field">
+
+            <label for="course">
+
+                ৪। অধ্যয়নরত শ্রেণি/কোর্স ও বিষয়ের নাম
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="text"
+                id="course"
+                name="course"
+                placeholder="যেমন: Software Engineering"
+                required
+            >
+
+        </div>
+
+
+
+        <!-- =================================================
+             SECTION 02
+        ================================================== -->
+
+        <div class="section-title">
+
+            <span class="section-number">
+                ০২
+            </span>
+
+            শিক্ষাবর্ষ ও পরীক্ষার তথ্য
+
+        </div>
+
+
+
+        <!-- QUESTION 5 -->
+
+        <div class="field">
+
+            <label>
+
+                ৫। বর্ষ/সেমিস্টার
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+
+            <div class="sub-grid three">
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="levelTerm"
+                    >
+                        লেভেল/টার্ম
+                    </label>
+
+                    <input
+                        type="text"
+                        id="levelTerm"
+                        name="level_term"
+                        placeholder="Level 1 Term 1"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="session"
+                    >
+                        সেশন
+                    </label>
+
+                    <input
+                        type="text"
+                        id="session"
+                        name="session"
+                        placeholder="2023-24"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="roll"
+                    >
+                        রোল নং
+                    </label>
+
+                    <input
+                        type="text"
+                        id="roll"
+                        name="roll"
+                        placeholder="রোল নম্বর"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="field-inner">
+
+                <label
+                    class="small-label"
+                    for="group"
+                >
+                    গ্রুপ/বিভাগ
+                </label>
+
+                <input
+                    type="text"
+                    id="group"
+                    name="group"
+                    placeholder="গ্রুপ / বিভাগ"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 6 -->
+
+        <div class="field">
+
+            <label>
+
+                ৬। সংশ্লিষ্ট পরীক্ষার নাম ও সময়সূচি
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+
+            <div class="sub-grid">
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="examName"
+                    >
+                        পরীক্ষার নাম
+                    </label>
+
+                    <input
+                        type="text"
+                        id="examName"
+                        name="exam_name"
+                        placeholder="পরীক্ষার নাম"
+                        required
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="examStart"
+                    >
+                        শুরুর তারিখ
+                    </label>
+
+                    <input
+                        type="date"
+                        id="examStart"
+                        name="exam_start"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="examEnd"
+                    >
+                        শেষের তারিখ
+                    </label>
+
+                    <input
+                        type="date"
+                        id="examEnd"
+                        name="exam_end"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 7 -->
+
+        <div class="field">
+
+            <label for="resultDate">
+
+                ৭। পরীক্ষার ফলাফল প্রকাশের তারিখ
+
+            </label>
+
+            <input
+                type="date"
+                id="resultDate"
+                name="result_date"
+            >
+
+        </div>
+
+
+
+        <!-- QUESTION 8 -->
+
+        <div class="field">
+
+            <label>
+
+                ৮। বর্তমান পরীক্ষায় প্রকাশিত পরীক্ষার ফলাফল
+
+            </label>
+
+
+            <div class="result-grid">
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="gpa"
+                    >
+                        জিপিএ
+                    </label>
+
+                    <input
+                        type="text"
+                        id="gpa"
+                        name="gpa"
+                        placeholder="GPA"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="grade"
+                    >
+                        গ্রেড
+                    </label>
+
+                    <input
+                        type="text"
+                        id="grade"
+                        name="grade"
+                        placeholder="Grade"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="score"
+                    >
+                        স্কোর
+                    </label>
+
+                    <input
+                        type="text"
+                        id="score"
+                        name="score"
+                        placeholder="Score"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="resultClass"
+                    >
+                        প্রাপ্ত বিভাগ/শ্রেণি
+                    </label>
+
+                    <input
+                        type="text"
+                        id="resultClass"
+                        name="result_class"
+                        placeholder="বিভাগ / শ্রেণি"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="obtainedMarks"
+                    >
+                        প্রাপ্ত নম্বর
+                    </label>
+
+                    <input
+                        type="text"
+                        id="obtainedMarks"
+                        name="obtained_marks"
+                        placeholder="প্রাপ্ত নম্বর"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="totalMarks"
+                    >
+                        মোট নম্বর
+                    </label>
+
+                    <input
+                        type="text"
+                        id="totalMarks"
+                        name="total_marks"
+                        placeholder="মোট নম্বর"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 9 -->
+
+        <div class="field">
+
+            <label for="specialInfo">
+
+                ৯। বিশেষ কোন তথ্য/অগ্রগতি/
+                অন্যান্য তথ্য (যদি থাকে)
+
+            </label>
+
+            <textarea
+                id="specialInfo"
+                name="special_info"
+                placeholder="প্রয়োজনীয় তথ্য লিখুন..."
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SECTION 03
+        ================================================== -->
+
+        <div class="section-title">
+
+            <span class="section-number">
+                ০৩
+            </span>
+
+            শিক্ষাভাতা সংক্রান্ত তথ্য
+
+        </div>
+
+
+
+        <!-- QUESTION 10 -->
+
+        <div class="field">
+
+            <label>
+
+                ১০। শিক্ষাভাতা প্রাপ্তির মাধ্যমের নাম ও
+                হিসাব নম্বর (প্রযোজ্য ক্ষেত্রে)
+
+            </label>
+
+
+            <div class="sub-grid">
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="paymentMethod"
+                    >
+                        মাধ্যম
+                    </label>
+
+                    <select
+                        id="paymentMethod"
+                        name="payment_method"
+                    >
+
+                        <option value="">
+                            নির্বাচন করুন
+                        </option>
+
+                        <option value="বিকাশ">
+                            বিকাশ
+                        </option>
+
+                        <option value="রকেট">
+                            রকেট
+                        </option>
+
+                        <option value="ক্যাশ">
+                            ক্যাশ
+                        </option>
+
+                        <option value="ব্যাংক">
+                            ব্যাংক
+                        </option>
+
+                        <option value="কুরিয়ার">
+                            কুরিয়ার
+                        </option>
+
+                        <option value="ডাক">
+                            ডাক
+                        </option>
+
+                        <option value="অন্যান্য">
+                            অন্যান্য
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="accountNumber"
+                    >
+                        হিসাব/মোবাইল নম্বর
+                    </label>
+
+                    <input
+                        type="text"
+                        id="accountNumber"
+                        name="account_number"
+                        placeholder="নম্বর"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="sub-grid">
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="bankName"
+                    >
+                        ব্যাংক/কুরিয়ার নাম
+                    </label>
+
+                    <input
+                        type="text"
+                        id="bankName"
+                        name="bank_name"
+                        placeholder="নাম"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label
+                        class="small-label"
+                        for="branch"
+                    >
+                        শাখা
+                    </label>
+
+                    <input
+                        type="text"
+                        id="branch"
+                        name="branch"
+                        placeholder="শাখা"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 11 -->
+
+        <div class="field">
+
+            <label>
+
+                ১১। বর্তমান মেয়াদে শিক্ষাভাতা প্রাপ্তির
+                তারিখ ও টাকা
+
+            </label>
+
+
+            <div class="allowance-grid">
+
+
+                <div class="allowance-row">
+
+                    <strong>
+                        ১ম
+                    </strong>
+
+                    <input
+                        type="date"
+                        id="allowanceDate1"
+                        name="allowance_date_1"
+                    >
+
+                    <input
+                        type="number"
+                        id="allowanceAmount1"
+                        name="allowance_amount_1"
+                        placeholder="টাকা"
+                    >
+
+                </div>
+
+
+                <div class="allowance-row">
+
+                    <strong>
+                        ২য়
+                    </strong>
+
+                    <input
+                        type="date"
+                        id="allowanceDate2"
+                        name="allowance_date_2"
+                    >
+
+                    <input
+                        type="number"
+                        id="allowanceAmount2"
+                        name="allowance_amount_2"
+                        placeholder="টাকা"
+                    >
+
+                </div>
+
+
+                <div class="allowance-row">
+
+                    <strong>
+                        ৩য়
+                    </strong>
+
+                    <input
+                        type="date"
+                        id="allowanceDate3"
+                        name="allowance_date_3"
+                    >
+
+                    <input
+                        type="number"
+                        id="allowanceAmount3"
+                        name="allowance_amount_3"
+                        placeholder="টাকা"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 12 -->
+
+        <div class="field">
+
+            <label for="difficulty">
+
+                ১২। শিক্ষাভাতা নিয়মিত প্রাপ্তিতে কোনো
+                অসুবিধা হলে বিস্তারিত লিখুন
+
+            </label>
+
+            <textarea
+                id="difficulty"
+                name="difficulty"
+                placeholder="বিস্তারিত লিখুন..."
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SECTION 04
+        ================================================== -->
+
+        <div class="section-title">
+
+            <span class="section-number">
+                ০৪
+            </span>
+
+            ঠিকানা ও যোগাযোগ
+
+        </div>
+
+
+
+        <!-- QUESTION 13 -->
+
+        <div class="field">
+
+            <label for="presentAddress">
+
+                ১৩। বর্তমান বসবাসের ঠিকানা
+
+            </label>
+
+            <textarea
+                id="presentAddress"
+                name="present_address"
+                placeholder="বর্তমান বসবাসের ঠিকানা লিখুন..."
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- QUESTION 14 -->
+
+        <div class="field">
+
+            <label for="contactAddress">
+
+                ১৪। বর্তমান যোগাযোগের ঠিকানা
+                (পোস্টাল কোডসহ)
+
+            </label>
+
+            <textarea
+                id="contactAddress"
+                name="contact_address"
+                placeholder="যোগাযোগের ঠিকানা ও পোস্টাল কোড লিখুন..."
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- QUESTION 15 -->
+
+        <div class="field">
+
+            <label for="guardianPhone">
+
+                ১৫। শিক্ষার্থী/অভিভাবকের মোবাইল নম্বর
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="tel"
+                id="guardianPhone"
+                name="guardian_phone"
+                placeholder="মোবাইল নম্বর"
+                required
+            >
+
+        </div>
+
+
+
+        <!-- =================================================
+             QUESTION 16
+        ================================================== -->
+
+        <div class="section-title">
+
+            <span class="section-number">
+                ১৬
+            </span>
+
+            শিক্ষার্থীর স্বাক্ষর ও তারিখ
+
+        </div>
+
+
+        <div class="field">
+
+
+            <label>
+
+                শিক্ষার্থীর স্বাক্ষর
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+
+            <div class="upload-box">
+
+
+                <input
+                    type="file"
+                    id="signature"
+                    name="signature"
+                    accept="image/png,image/jpeg,image/jpg"
+                    required
+                >
+
+
+                <label
+                    for="signature"
+                    class="upload-label"
+                >
+
+                    <span class="upload-icon">
+                        ↑
+                    </span>
+
+
+                    <span>
+
+                        <strong>
+                            স্বাক্ষরের ছবি Upload করুন
+                        </strong>
+
+                        <small>
+                            PNG বা JPG • সর্বোচ্চ 2MB
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="signatureDate">
+
+                স্বাক্ষরের তারিখ
+
+            </label>
+
+            <input
+                type="date"
+                id="signatureDate"
+                name="signature_date"
+            >
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONFIRMATION
+        ================================================== -->
+
+        <label class="terms">
+
+
+            <input
+                type="checkbox"
+                id="confirmation"
+                name="confirmation"
+                required
+            >
+
+
+            <span>
+
+                আমি নিশ্চিত করছি যে উপরে প্রদত্ত
+                সকল তথ্য সঠিক ও সম্পূর্ণ।
+
+            </span>
+
+
+        </label>
+
+
+
+        <!-- =================================================
+             BUTTONS
+        ================================================== -->
+
+        <div class="action-buttons">
+
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="downloadBtn"
+            >
+
+                ↓
+                PDF Download
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="secondary-btn"
+                id="printBtn"
+            >
+
+                🖨
+                Print
+
+            </button>
+
+
+        </div>
+
+
+
+        <button
+            type="submit"
+            class="submit-btn"
+            id="submitBtn"
+        >
+
+            Submit Application
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+    </form>
+
+</section>
+
+
+
+<!-- =====================================================
+     PREVIEW
+===================================================== -->
+
+<section class="card preview-card">
+
+
+    <div class="preview-top">
+
+        <h3>
+            Live Preview
+        </h3>
+
+
+        <span class="a4-label">
+            A4 • Portrait
+        </span>
+
+    </div>
+
+
+
+    <div class="paper">
+
+
+        <!-- PAPER HEADER -->
+
+        <div class="paper-header">
+
+
+            <img
+                src="logo.png"
+                class="paper-logo-image"
+                alt="Logo"
+            >
+
+
+            <h2>
+                টিসিএম এডুকেশন স্কলারশিপ প্রোগ্রাম
+            </h2>
+
+
+            <h3>
+                শিক্ষার্থীদের ত্রৈমাসিক অগ্রগতি প্রতিবেদন
+            </h3>
+
+
+            <div class="paper-period">
+
+                প্রতিবেদন:
+
+                <strong id="previewPeriod">
+                    —
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- PREVIEW TABLE -->
+
+        <div class="paper-table">
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ১
+                </div>
+
+                <div class="paper-label">
+                    শিক্ষার্থীর নাম
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewName"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ২
+                </div>
+
+                <div class="paper-label">
+                    বর্তমান শিক্ষা প্রতিষ্ঠান
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewInstitution"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ৩
+                </div>
+
+                <div class="paper-label">
+                    শিক্ষা প্রতিষ্ঠান প্রধান /
+                    বিভাগীয় প্রধান / শ্রেণি শিক্ষক
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewTeacher"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ৪
+                </div>
+
+                <div class="paper-label">
+                    অধ্যয়নরত শ্রেণি/কোর্স ও বিষয়
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewCourse"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ৫
+                </div>
+
+                <div class="paper-label">
+                    বর্ষ/সেমিস্টার
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewAcademic"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ৬
+                </div>
+
+                <div class="paper-label">
+                    সংশ্লিষ্ট পরীক্ষার নাম ও সময়সূচি
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewExam"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ৭
+                </div>
+
+                <div class="paper-label">
+                    পরীক্ষার ফলাফল প্রকাশের তারিখ
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewResultDate"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ৮
+                </div>
+
+                <div class="paper-label">
+                    বর্তমান পরীক্ষার ফলাফল
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewResult"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ৯
+                </div>
+
+                <div class="paper-label">
+                    বিশেষ তথ্য/অগ্রগতি
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewSpecialInfo"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ১০
+                </div>
+
+                <div class="paper-label">
+                    শিক্ষাভাতা প্রাপ্তির মাধ্যম
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewPayment"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ১১
+                </div>
+
+                <div class="paper-label">
+                    শিক্ষাভাতা প্রাপ্তির তারিখ ও টাকা
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewAllowance"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ১২
+                </div>
+
+                <div class="paper-label">
+                    শিক্ষাভাতা প্রাপ্তিতে অসুবিধা
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewDifficulty"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ১৩
+                </div>
+
+                <div class="paper-label">
+                    বর্তমান বসবাসের ঠিকানা
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewPresentAddress"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ১৪
+                </div>
+
+                <div class="paper-label">
+                    বর্তমান যোগাযোগের ঠিকানা
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewContactAddress"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <div class="paper-row">
+
+                <div class="paper-number">
+                    ১৫
+                </div>
+
+                <div class="paper-label">
+                    শিক্ষার্থী/অভিভাবকের মোবাইল
+                </div>
+
+                <div
+                    class="paper-value"
+                    id="previewGuardianPhone"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SIGNATURE -->
+
+        <div class="paper-footer">
+
+
+            <div>
+
+                তারিখ:
+
+                <span id="previewSignatureDate">
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="signature-area">
+
+
+                <div class="signature-image-box">
+
+                    <img
+                        id="previewSignature"
+                        src=""
+                        alt="Signature"
+                    >
+
+                </div>
+
+
+                <div class="signature-line">
+                </div>
+
+
+                <span>
+                    শিক্ষার্থীর স্বাক্ষর
+                </span>
+
+
+            </div>
+
+
+        </div>
+        <!-- =====================================================
+     WEBSITE FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-contact">
+
+        <div>
+            <strong>টিসিএম বাংলাদেশ</strong>
+        </div>
+
+        <div>
+            ২৮/১ পশ্চিম মালিবাগ, ঢাকা-১২১৭
+        </div>
+
+        <div>
+            ফোন: ০৯৬১৩৬১৫৬৬৬, ০৯৬১৩৬১৫৬৭৭
+        </div>
+
+        <div>
+            ওয়েব: info@tcmbangladesh.org
+            &nbsp; | &nbsp;
+            ইমেইল: psks_tcm@yahoo.com
+        </div>
+
+        <div>
+            shahina@tcmbangladesh.org
+        </div>
+
+    </div>
+
+    <div class="footer-developed">
+
+        Developed by
+        <strong>Masfiq Rahman Misha</strong>
+
+    </div>
+
+</footer>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     STATUS
+===================================================== -->
+
+<div
+    class="status"
+    id="successMessage"
+>
+</div>
+
+
+
+<!-- =====================================================
+     EMAILJS
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+<!-- =====================================================
+     MAIN JS
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+
+</html>
