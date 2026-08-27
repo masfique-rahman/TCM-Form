@@ -1,8 +1,9 @@
 /* =========================================================
-   SMARTFORM — MODERN BANGLA UI
+   SMARTFORM — টিসিএম বাংলাদেশ
+   ত্রৈমাসিক অগ্রগতি প্রতিবেদন
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
 
 * {
     margin: 0;
@@ -10,23 +11,64 @@
     box-sizing: border-box;
 }
 
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+:root {
+
+    /* Ink / neutrals */
+    --ink: #1b2433;
+    --ink-soft: #4a5568;
+    --slate: #667085;
+    --line: #e2e6ed;
+    --line-soft: #edf0f4;
+    --bg: #f2f4f8;
+
+    /* Navy — primary identity */
+    --navy-900: #0e2a47;
+    --navy-800: #123655;
+    --navy-700: #1a4569;
+    --navy-100: #eaf0f6;
+
+    /* Gold — the one accent, used sparingly */
+    --gold-700: #9c7a2e;
+    --gold-500: #b8923c;
+    --gold-300: #e3cd94;
+    --gold-100: #faf4e6;
+
+    /* Paper */
+    --paper: #fefdfa;
+    --paper-line: #e6e1d4;
+
+    /* Status */
+    --ok: #0d7a56;
+    --err: #c0392b;
+
+    --radius-lg: 16px;
+    --radius-md: 11px;
+    --radius-sm: 7px;
+}
+
+
 body {
     min-height: 100vh;
 
     background:
         radial-gradient(
-            circle at 5% 5%,
-            rgba(37, 99, 235, .12),
-            transparent 30%
+            circle at 4% 0%,
+            rgba(14, 42, 71, .07),
+            transparent 32%
         ),
         radial-gradient(
-            circle at 95% 95%,
-            rgba(16, 185, 129, .10),
-            transparent 30%
+            circle at 100% 100%,
+            rgba(184, 146, 60, .10),
+            transparent 32%
         ),
-        #f4f7fb;
+        var(--bg);
 
-    color: #172033;
+    color: var(--ink);
 
     padding: 30px 20px;
 
@@ -36,6 +78,11 @@ body {
         "Segoe UI",
         Arial,
         sans-serif;
+}
+
+::selection {
+    background: var(--gold-300);
+    color: var(--navy-900);
 }
 
 
@@ -51,22 +98,22 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    padding: 3px 5px;
+    padding: 4px 6px;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 14px;
 }
 
 .brand-logo {
     width: 55px;
     height: 55px;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
-    background: white;
+    background: var(--navy-900);
 
     display: flex;
     align-items: center;
@@ -75,47 +122,68 @@ body {
     overflow: hidden;
 
     box-shadow:
-        0 8px 25px rgba(15, 23, 42, .10);
+        0 8px 22px rgba(14, 42, 71, .28),
+        0 0 0 3px var(--gold-300) inset;
 }
 
 .brand-logo img {
-    width: 85%;
-    height: 85%;
+    width: 78%;
+    height: 78%;
 
     object-fit: contain;
+
+    filter: brightness(0) invert(1);
 }
 
 .brand-text h2 {
+    font-family: "Noto Serif Bengali", serif;
+
     font-size: 19px;
-    font-weight: 800;
-    color: #172033;
+    font-weight: 700;
+    color: var(--navy-900);
 }
 
 .brand-text span {
     display: block;
 
-    margin-top: 2px;
+    margin-top: 3px;
 
     font-size: 12px;
 
-    color: #718096;
+    color: var(--slate);
 }
 
 .secure {
-    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 8px 16px;
 
     border-radius: 30px;
 
-    background: #ecfdf5;
+    background: var(--navy-900);
 
-    color: #059669;
+    color: var(--gold-300);
 
     font-family: "Inter", sans-serif;
 
     font-size: 11px;
     font-weight: 700;
+    letter-spacing: .2px;
 
-    border: 1px solid #d1fae5;
+    border: 1px solid var(--navy-700);
+}
+
+.secure::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--gold-500);
 }
 
 
@@ -144,14 +212,14 @@ body {
    ========================================================= */
 
 .card {
-    background: rgba(255,255,255,.94);
+    background: rgba(255, 255, 255, .96);
 
-    border: 1px solid #e5eaf0;
+    border: 1px solid var(--line);
 
-    border-radius: 22px;
+    border-radius: var(--radius-lg);
 
     box-shadow:
-        0 20px 55px rgba(15,23,42,.07);
+        0 20px 50px rgba(14, 42, 71, .08);
 
     overflow: hidden;
 }
@@ -163,6 +231,8 @@ body {
 
 .form-card {
     padding: 32px;
+
+    border-top: 3px solid var(--navy-900);
 }
 
 .form-heading {
@@ -170,15 +240,15 @@ body {
 }
 
 .form-heading h1 {
-    font-size: 27px;
+    font-family: "Noto Serif Bengali", serif;
 
-    line-height: 1.35;
+    font-size: 26px;
 
-    font-weight: 800;
+    line-height: 1.4;
 
-    letter-spacing: -.4px;
+    font-weight: 700;
 
-    color: #172033;
+    color: var(--navy-900);
 
     margin-bottom: 8px;
 }
@@ -188,7 +258,7 @@ body {
 
     line-height: 1.8;
 
-    color: #718096;
+    color: var(--slate);
 }
 
 
@@ -201,16 +271,11 @@ body {
 
     padding: 18px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #f8fbff,
-            #f1f7ff
-        );
+    background: var(--navy-100);
 
-    border: 1px solid #dbeafe;
+    border: 1px solid #d6e2ee;
 
-    border-radius: 16px;
+    border-radius: var(--radius-md);
 }
 
 .period-heading {
@@ -233,9 +298,9 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: #2563eb;
+    background: var(--navy-900);
 
-    color: white;
+    color: var(--gold-300);
 
     font-family: "Inter", sans-serif;
 
@@ -248,7 +313,7 @@ body {
 
     font-size: 14px;
 
-    color: #1e293b;
+    color: var(--navy-900);
 }
 
 .period-heading small {
@@ -256,7 +321,7 @@ body {
 
     margin-top: 2px;
 
-    color: #64748b;
+    color: var(--slate);
 
     font-size: 11px;
 }
@@ -279,25 +344,25 @@ body {
 
     padding: 11px 12px;
 
-    border: 1px solid #e2e8f0;
+    border: 1px solid #dbe2ea;
 
     background: white;
 
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
 
     cursor: pointer;
 
     font-size: 12px;
 
-    color: #475569;
+    color: var(--ink-soft);
 
-    transition: .2s ease;
+    transition: .18s ease;
 }
 
 .radio-option:hover {
-    border-color: #93c5fd;
+    border-color: var(--gold-300);
 
-    background: #f8fbff;
+    background: var(--gold-100);
 }
 
 .radio-option input {
@@ -308,6 +373,11 @@ body {
     pointer-events: none;
 }
 
+.radio-option input:focus-visible + .custom-radio {
+    outline: 2px solid var(--navy-700);
+    outline-offset: 2px;
+}
+
 .custom-radio {
     width: 16px;
     height: 16px;
@@ -316,15 +386,15 @@ body {
 
     border-radius: 50%;
 
-    border: 2px solid #cbd5e1;
+    border: 2px solid #cbd3de;
 
     position: relative;
 
-    transition: .2s ease;
+    transition: .18s ease;
 }
 
 .radio-option input:checked + .custom-radio {
-    border-color: #2563eb;
+    border-color: var(--navy-900);
 }
 
 .radio-option input:checked + .custom-radio::after {
@@ -340,15 +410,15 @@ body {
 
     border-radius: 50%;
 
-    background: #2563eb;
+    background: var(--gold-500);
 }
 
 .radio-option:has(input:checked) {
-    border-color: #93c5fd;
+    border-color: var(--navy-700);
 
-    background: #eff6ff;
+    background: var(--navy-100);
 
-    color: #1d4ed8;
+    color: var(--navy-900);
 
     font-weight: 600;
 }
@@ -364,24 +434,26 @@ body {
 
     gap: 10px;
 
-    margin: 28px 0 17px;
+    margin: 30px 0 17px;
 
-    font-size: 14px;
+    font-family: "Noto Serif Bengali", serif;
 
-    font-weight: 800;
+    font-size: 15px;
 
-    color: #334155;
+    font-weight: 700;
+
+    color: var(--navy-900);
 }
 
 .section-number {
     width: 28px;
     height: 28px;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
-    background: #eff6ff;
+    background: var(--gold-100);
 
-    color: #2563eb;
+    color: var(--gold-700);
 
     display: flex;
     align-items: center;
@@ -395,7 +467,7 @@ body {
 
     font-weight: 800;
 
-    border: 1px solid #dbeafe;
+    border: 1px solid var(--gold-300);
 }
 
 
@@ -419,11 +491,11 @@ body {
 
     font-weight: 700;
 
-    color: #475569;
+    color: var(--ink-soft);
 }
 
 .required {
-    color: #ef4444;
+    color: var(--err);
 }
 
 input,
@@ -433,13 +505,13 @@ textarea {
 
     outline: none;
 
-    border: 1px solid #dfe5ec;
+    border: 1px solid #dfe3ea;
 
-    border-radius: 11px;
+    border-radius: var(--radius-sm);
 
-    background: #f9fafc;
+    background: #f8f9fb;
 
-    color: #172033;
+    color: var(--ink);
 
     padding: 11px 13px;
 
@@ -450,13 +522,13 @@ textarea {
 
     font-size: 13px;
 
-    transition: .2s ease;
+    transition: .18s ease;
 }
 
 input:hover,
 select:hover,
 textarea:hover {
-    border-color: #cbd5e1;
+    border-color: #c7cedb;
 
     background: white;
 }
@@ -466,10 +538,10 @@ select:focus,
 textarea:focus {
     background: white;
 
-    border-color: #3b82f6;
+    border-color: var(--navy-700);
 
     box-shadow:
-        0 0 0 4px rgba(59,130,246,.08);
+        0 0 0 4px rgba(26, 69, 105, .10);
 }
 
 textarea {
@@ -546,9 +618,9 @@ input[type="date"] {
 
     border-radius: 9px;
 
-    background: #f1f5f9;
+    background: var(--navy-100);
 
-    color: #475569;
+    color: var(--navy-800);
 
     font-size: 12px;
 }
@@ -573,21 +645,21 @@ input[type="date"] {
 
     padding: 14px;
 
-    border: 1.5px dashed #cbd5e1;
+    border: 1.5px dashed #cbd3de;
 
-    border-radius: 13px;
+    border-radius: var(--radius-md);
 
-    background: #f8fafc;
+    background: #f8f9fb;
 
     cursor: pointer;
 
-    transition: .2s ease;
+    transition: .18s ease;
 }
 
 .upload-label:hover {
-    border-color: #60a5fa;
+    border-color: var(--gold-500);
 
-    background: #eff6ff;
+    background: var(--gold-100);
 }
 
 .upload-icon {
@@ -600,9 +672,9 @@ input[type="date"] {
     align-items: center;
     justify-content: center;
 
-    background: #eff6ff;
+    background: var(--navy-100);
 
-    color: #2563eb;
+    color: var(--navy-800);
 
     font-size: 20px;
 
@@ -616,7 +688,7 @@ input[type="date"] {
 
     font-size: 12px;
 
-    color: #334155;
+    color: var(--ink-soft);
 }
 
 .upload-label small {
@@ -624,7 +696,7 @@ input[type="date"] {
 
     margin-top: 4px;
 
-    color: #94a3b8;
+    color: var(--slate);
 
     font-size: 10px;
 }
@@ -642,7 +714,7 @@ input[type="date"] {
 
     margin-top: 22px;
 
-    color: #64748b;
+    color: var(--slate);
 
     font-size: 11px;
 
@@ -657,7 +729,7 @@ input[type="date"] {
 
     margin-top: 1px;
 
-    accent-color: #2563eb;
+    accent-color: var(--navy-800);
 }
 
 
@@ -679,7 +751,7 @@ input[type="date"] {
 .submit-btn {
     border: none;
 
-    border-radius: 11px;
+    border-radius: var(--radius-sm);
 
     padding: 13px;
 
@@ -694,19 +766,19 @@ input[type="date"] {
 
     cursor: pointer;
 
-    transition: .2s ease;
+    transition: .18s ease;
 }
 
 .secondary-btn {
-    background: #f8fafc;
+    background: #f8f9fb;
 
-    color: #334155;
+    color: var(--ink-soft);
 
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--line);
 }
 
 .secondary-btn:hover {
-    background: #f1f5f9;
+    background: var(--navy-100);
 
     transform: translateY(-1px);
 }
@@ -719,21 +791,21 @@ input[type="date"] {
     background:
         linear-gradient(
             135deg,
-            #2563eb,
-            #0ea5e9
+            var(--navy-900),
+            var(--navy-700)
         );
 
     color: white;
 
     box-shadow:
-        0 10px 24px rgba(37,99,235,.20);
+        0 10px 24px rgba(14, 42, 71, .28);
 }
 
 .submit-btn:hover {
     transform: translateY(-1px);
 
     box-shadow:
-        0 14px 28px rgba(37,99,235,.27);
+        0 14px 28px rgba(14, 42, 71, .34);
 }
 
 .submit-btn:disabled,
@@ -745,19 +817,25 @@ input[type="date"] {
     transform: none;
 }
 
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--navy-700);
+    outline-offset: 2px;
+}
+
 
 /* =========================================================
    A4 LIVE PREVIEW
-   (previously duplicated in two sections with conflicting
-    values — merged here into one consistent block)
    ========================================================= */
 
 .preview-card {
-    background: #e9eef5;
-    border: 1px solid #e2e8f0;
-    border-radius: 18px;
+    background: #e7ecf3;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
     padding: 22px;
-    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 32px rgba(14, 42, 71, .09);
     position: sticky;
     top: 20px;
 }
@@ -774,23 +852,23 @@ input[type="date"] {
     font-family: "Inter", sans-serif;
     font-size: 14px;
     font-weight: 700;
-    color: #334155;
+    color: var(--navy-900);
 }
 
 .a4-label {
     font-size: 9px;
-    color: #64748b;
+    color: var(--navy-800);
     background: white;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--gold-300);
     padding: 6px 9px;
     border-radius: 7px;
     font-family: "Inter", sans-serif;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   A4 PAPER
+   A4 PAPER — styled to read like actual letterhead stationery
    ========================================================= */
 
 .paper {
@@ -799,7 +877,7 @@ input[type="date"] {
     height: auto;
     min-height: 0;
 
-    background: white;
+    background: var(--paper);
 
     margin: 0 auto;
 
@@ -807,14 +885,14 @@ input[type="date"] {
 
     box-sizing: border-box;
 
-    border-radius: 5px;
+    border-radius: 4px;
 
     box-shadow:
-        0 12px 35px rgba(15,23,42,.14);
+        0 12px 32px rgba(14, 42, 71, .16);
 
     overflow: visible;
 
-    color: #111827;
+    color: #171b24;
 
     font-family:
         "Noto Serif Bengali",
@@ -838,7 +916,7 @@ input[type="date"] {
 
     margin-bottom: 10px;
 
-    border-bottom: 1px solid #dbe2ea;
+    border-bottom: 2px solid var(--gold-500);
 }
 
 
@@ -865,13 +943,13 @@ input[type="date"] {
     padding-top: 2px;
     padding-left: 55px;
 
-    font-size: 13px;
+    font-size: 13.5px;
 
     line-height: 1.5;
 
     font-weight: 800;
 
-    color: #111827;
+    color: var(--navy-900);
 }
 
 
@@ -888,7 +966,7 @@ input[type="date"] {
 
     font-weight: 700;
 
-    color: #334155;
+    color: var(--ink-soft);
 }
 
 
@@ -901,19 +979,19 @@ input[type="date"] {
 
     padding: 4px 14px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--gold-300);
 
     border-radius: 4px;
 
-    background: #f8fafc;
+    background: var(--gold-100);
 
     font-size: 8px;
 
-    color: #64748b;
+    color: var(--gold-700);
 }
 
 .paper-period strong {
-    color: #2563eb;
+    color: var(--navy-900);
 
     font-weight: 700;
 }
@@ -926,7 +1004,7 @@ input[type="date"] {
 .paper-table {
     width: 100%;
 
-    border: 1px solid #dfe5ec;
+    border: 1px solid var(--paper-line);
 
     border-radius: 3px;
 
@@ -943,7 +1021,7 @@ input[type="date"] {
 
     min-height: 25px;
 
-    border-bottom: 1px solid #e7ebef;
+    border-bottom: 1px solid #ece7d9;
 
     font-size: 7.5px;
 
@@ -965,15 +1043,15 @@ input[type="date"] {
 
     padding: 6px 2px;
 
-    background: #f8fafc;
+    background: var(--navy-100);
 
-    border-right: 1px solid #dbe2ea;
+    border-right: 1px solid var(--paper-line);
 
     font-size: 10px;
 
     font-weight: 700;
 
-    color: #64748b;
+    color: var(--navy-800);
 }
 
 
@@ -986,10 +1064,10 @@ input[type="date"] {
 
     padding: 6px 7px;
 
-    background: #fbfcfd;
+    background: #fbfaf6;
 
-    border-right: 1px solid #dbe2ea;
-    border-left: 1px solid #e7ebef;
+    border-right: 1px solid var(--paper-line);
+    border-left: 1px solid #f1ede1;
 
     font-size: 11px;
 
@@ -997,7 +1075,7 @@ input[type="date"] {
 
     font-weight: 700;
 
-    color: #475569;
+    color: var(--ink-soft);
 }
 
 
@@ -1016,9 +1094,9 @@ input[type="date"] {
 
     font-weight: 400;
 
-    color: #111827;
+    color: #171b24;
 
-    border-left: 1px solid #e7ebef;
+    border-left: 1px solid #f1ede1;
 
     word-break: break-word;
 }
@@ -1059,7 +1137,7 @@ input[type="date"] {
 
     font-size: 7px;
 
-    color: #64748b;
+    color: var(--slate);
 }
 
 
@@ -1070,7 +1148,7 @@ input[type="date"] {
 
     font-size: 10px;
 
-    color: #64748b;
+    color: var(--slate);
 }
 
 
@@ -1123,7 +1201,7 @@ input[type="date"] {
 .signature-line {
     width: 85px;
 
-    border-top: 1px solid #64748b;
+    border-top: 1px solid var(--slate);
 
     margin-top: 2px;
 
@@ -1136,12 +1214,12 @@ input[type="date"] {
 .signature-area > span {
     font-size: 9px;
 
-    color: #64748b;
+    color: var(--slate);
 }
 
 
 /* =========================================================
-   ORGANIZATION FOOTER
+   ORGANIZATION FOOTER (visual divider before .site-footer)
    ========================================================= */
 
 .paper::after {
@@ -1155,17 +1233,8 @@ input[type="date"] {
 
     margin-top: 8px;
 
-    background: #e2e8f0;
+    background: var(--paper-line);
 }
-
-
-/*
-   IMPORTANT:
-   Actual footer generated by JS
-   is positioned visually through PDF.
-   Live preview-এর জন্য নিচের footer styling
-   ব্যবহার হবে যদি HTML footer থাকে.
-*/
 
 
 .pdf-footer {
@@ -1173,7 +1242,7 @@ input[type="date"] {
 
     padding-top: 5px;
 
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--line-soft);
 
     text-align: center;
 
@@ -1181,33 +1250,24 @@ input[type="date"] {
         "Noto Sans Bengali",
         sans-serif;
 
-    color: #64748b;
+    color: var(--slate);
 }
-
-
-/* ORGANIZATION */
 
 .pdf-footer .org-name {
     font-size: 8.5px;
 
     font-weight: 800;
 
-    color: #334155;
+    color: var(--navy-900);
 
     margin-bottom: 2px;
 }
-
-
-/* ADDRESS */
 
 .pdf-footer .address {
     font-size: 7px;
 
     line-height: 1.4;
 }
-
-
-/* CONTACT */
 
 .pdf-footer .contact {
     font-size: 7px;
@@ -1217,9 +1277,6 @@ input[type="date"] {
     margin-top: 1px;
 }
 
-
-/* EMAIL */
-
 .pdf-footer .email {
     font-size: 7px;
 
@@ -1228,23 +1285,20 @@ input[type="date"] {
     word-break: break-word;
 }
 
-
-/* DEVELOPED BY */
-
 .pdf-footer .developed {
     margin-top: 5px;
 
     padding-top: 4px;
 
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid var(--line-soft);
 
     font-size: 6.5px;
 
-    color: #94a3b8;
+    color: #9aa2ad;
 }
 
 .pdf-footer .developed strong {
-    color: #2563eb;
+    color: var(--navy-800);
 
     font-weight: 700;
 }
@@ -1390,11 +1444,11 @@ input[type="date"] {
     .paper {
         width: 210mm;
 
-        height: 297mm;
+        min-height: 297mm;
 
-        max-height: 297mm;
+        height: auto;
 
-        aspect-ratio: auto;
+        max-height: none;
 
         padding: 18mm;
 
@@ -1402,7 +1456,16 @@ input[type="date"] {
 
         box-shadow: none;
 
-        overflow: hidden;
+        overflow: visible;
+    }
+
+    /* keep rows / header / signature block from splitting across a page break */
+    .paper-header,
+    .paper-row,
+    .paper-footer,
+    .site-footer {
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     @page {
@@ -1469,7 +1532,7 @@ input[type="date"] {
     }
 
     .form-heading h1 {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .radio-group,
@@ -1504,13 +1567,13 @@ input[type="date"] {
 .site-footer {
     width: 100%;
     margin-top: 30px;
-    padding: 22px 20px 18px;
+    padding: 20px 20px 16px;
     background: #ffffff;
-    border-top: 1px solid #e2e8f0;
+    border-top: 2px solid var(--gold-500);
     text-align: center;
-    color: #475569;
-    font-size: 13px;
-    line-height: 1.8;
+    color: var(--ink-soft);
+    font-size: 11px;
+    line-height: 1.7;
 }
 
 .footer-contact {
@@ -1518,20 +1581,21 @@ input[type="date"] {
 }
 
 .footer-contact strong {
-    color: #1e293b;
-    font-size: 14px;
+    color: var(--navy-900);
+    font-size: 12.5px;
+    font-family: "Noto Serif Bengali", serif;
 }
 
 .footer-developed {
     margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px solid #f1f5f9;
-    color: #94a3b8;
+    border-top: 1px solid var(--line-soft);
+    color: #9aa2ad;
     font-size: 11px;
 }
 
 .footer-developed strong {
-    color: #2563eb;
+    color: var(--gold-700);
     font-weight: 700;
 }
 
@@ -1545,6 +1609,20 @@ input[type="date"] {
 
     .footer-contact strong {
         font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        transition: none !important;
+        animation: none !important;
     }
 
 }
