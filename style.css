@@ -1,0 +1,1550 @@
+/* =========================================================
+   SMARTFORM — MODERN BANGLA UI
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(37, 99, 235, .12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 95% 95%,
+            rgba(16, 185, 129, .10),
+            transparent 30%
+        ),
+        #f4f7fb;
+
+    color: #172033;
+
+    padding: 30px 20px;
+
+    font-family:
+        "Noto Sans Bengali",
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    max-width: 1250px;
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 3px 5px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.brand-logo {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 15px;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, .10);
+}
+
+.brand-logo img {
+    width: 85%;
+    height: 85%;
+
+    object-fit: contain;
+}
+
+.brand-text h2 {
+    font-size: 19px;
+    font-weight: 800;
+    color: #172033;
+}
+
+.brand-text span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 12px;
+
+    color: #718096;
+}
+
+.secure {
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    background: #ecfdf5;
+
+    color: #059669;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    border: 1px solid #d1fae5;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.wrapper {
+    max-width: 1250px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(390px, .95fr);
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.card {
+    background: rgba(255,255,255,.94);
+
+    border: 1px solid #e5eaf0;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 55px rgba(15,23,42,.07);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.form-card {
+    padding: 32px;
+}
+
+.form-heading {
+    margin-bottom: 26px;
+}
+
+.form-heading h1 {
+    font-size: 27px;
+
+    line-height: 1.35;
+
+    font-weight: 800;
+
+    letter-spacing: -.4px;
+
+    color: #172033;
+
+    margin-bottom: 8px;
+}
+
+.form-heading p {
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color: #718096;
+}
+
+
+/* =========================================================
+   REPORTING PERIOD
+   ========================================================= */
+
+.period-box {
+    margin-bottom: 27px;
+
+    padding: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fbff,
+            #f1f7ff
+        );
+
+    border: 1px solid #dbeafe;
+
+    border-radius: 16px;
+}
+
+.period-heading {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 15px;
+}
+
+.period-number {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.period-heading strong {
+    display: block;
+
+    font-size: 14px;
+
+    color: #1e293b;
+}
+
+.period-heading small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.radio-group {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.radio-option {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px 12px;
+
+    border: 1px solid #e2e8f0;
+
+    background: white;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    color: #475569;
+
+    transition: .2s ease;
+}
+
+.radio-option:hover {
+    border-color: #93c5fd;
+
+    background: #f8fbff;
+}
+
+.radio-option input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.custom-radio {
+    width: 16px;
+    height: 16px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    border: 2px solid #cbd5e1;
+
+    position: relative;
+
+    transition: .2s ease;
+}
+
+.radio-option input:checked + .custom-radio {
+    border-color: #2563eb;
+}
+
+.radio-option input:checked + .custom-radio::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    top: 2px;
+    left: 2px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+}
+
+.radio-option:has(input:checked) {
+    border-color: #93c5fd;
+
+    background: #eff6ff;
+
+    color: #1d4ed8;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 28px 0 17px;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    color: #334155;
+}
+
+.section-number {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 9px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+        "Noto Sans Bengali",
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    border: 1px solid #dbeafe;
+}
+
+
+/* =========================================================
+   FIELD
+   ========================================================= */
+
+.field {
+    margin-bottom: 17px;
+}
+
+.field > label,
+.small-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    font-weight: 700;
+
+    color: #475569;
+}
+
+.required {
+    color: #ef4444;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    outline: none;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 11px;
+
+    background: #f9fafc;
+
+    color: #172033;
+
+    padding: 11px 13px;
+
+    font-family:
+        "Noto Sans Bengali",
+        "Inter",
+        sans-serif;
+
+    font-size: 13px;
+
+    transition: .2s ease;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: #cbd5e1;
+
+    background: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    background: white;
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 4px rgba(59,130,246,.08);
+}
+
+textarea {
+    min-height: 100px;
+
+    resize: vertical;
+
+    line-height: 1.7;
+}
+
+input[type="date"] {
+    font-family: "Inter", sans-serif;
+}
+
+
+/* =========================================================
+   SUB GRIDS
+   ========================================================= */
+
+.sub-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.sub-grid.three {
+    grid-template-columns:
+        1fr 1fr 1fr;
+}
+
+.result-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap: 12px;
+}
+
+.field-inner {
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   ALLOWANCE
+   ========================================================= */
+
+.allowance-grid {
+    display: grid;
+
+    gap: 9px;
+}
+
+.allowance-row {
+    display: grid;
+
+    grid-template-columns: 40px 1fr 120px;
+
+    gap: 9px;
+
+    align-items: center;
+}
+
+.allowance-row strong {
+    width: 40px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   SIGNATURE UPLOAD
+   ========================================================= */
+
+.upload-box input[type="file"] {
+    display: none;
+}
+
+.upload-label {
+    min-height: 86px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    border: 1.5px dashed #cbd5e1;
+
+    border-radius: 13px;
+
+    background: #f8fafc;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.upload-label:hover {
+    border-color: #60a5fa;
+
+    background: #eff6ff;
+}
+
+.upload-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 20px;
+
+    font-family: "Inter", sans-serif;
+
+    font-weight: 800;
+}
+
+.upload-label strong {
+    display: block;
+
+    font-size: 12px;
+
+    color: #334155;
+}
+
+.upload-label small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   TERMS
+   ========================================================= */
+
+.terms {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 22px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    cursor: pointer;
+}
+
+.terms input {
+    width: 16px;
+    height: 16px;
+
+    margin-top: 1px;
+
+    accent-color: #2563eb;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.action-buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 11px;
+
+    margin-top: 23px;
+}
+
+.secondary-btn,
+.submit-btn {
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 13px;
+
+    font-family:
+        "Noto Sans Bengali",
+        "Inter",
+        sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.secondary-btn {
+    background: #f8fafc;
+
+    color: #334155;
+
+    border: 1px solid #e2e8f0;
+}
+
+.secondary-btn:hover {
+    background: #f1f5f9;
+
+    transform: translateY(-1px);
+}
+
+.submit-btn {
+    width: 100%;
+
+    margin-top: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #0ea5e9
+        );
+
+    color: white;
+
+    box-shadow:
+        0 10px 24px rgba(37,99,235,.20);
+}
+
+.submit-btn:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 14px 28px rgba(37,99,235,.27);
+}
+
+.submit-btn:disabled,
+.secondary-btn:disabled {
+    opacity: .55;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   A4 LIVE PREVIEW
+   (previously duplicated in two sections with conflicting
+    values — merged here into one consistent block)
+   ========================================================= */
+
+.preview-card {
+    background: #e9eef5;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+    position: sticky;
+    top: 20px;
+}
+
+.preview-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.preview-top h3 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.a4-label {
+    font-size: 9px;
+    color: #64748b;
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 6px 9px;
+    border-radius: 7px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   A4 PAPER
+   ========================================================= */
+
+.paper {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    min-height: 0;
+
+    background: white;
+
+    margin: 0 auto;
+
+    padding: 28px 30px;
+
+    box-sizing: border-box;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 12px 35px rgba(15,23,42,.14);
+
+    overflow: visible;
+
+    color: #111827;
+
+    font-family:
+        "Noto Serif Bengali",
+        "Noto Sans Bengali",
+        "SolaimanLipi",
+        "Kalpurush",
+        serif;
+}
+
+
+/* =========================================================
+   PAPER HEADER
+   ========================================================= */
+
+.paper-header {
+    position: relative;
+
+    text-align: center;
+
+    padding-bottom: 12px;
+
+    margin-bottom: 10px;
+
+    border-bottom: 1px solid #dbe2ea;
+}
+
+
+/* LOGO */
+
+.paper-logo-image {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 47px;
+    height: 47px;
+
+    object-fit: contain;
+}
+
+
+/* MAIN HEADING */
+
+.paper-header h2 {
+    margin: 0;
+
+    padding-top: 2px;
+    padding-left: 55px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    font-weight: 800;
+
+    color: #111827;
+}
+
+
+/* SUBTITLE */
+
+.paper-header h3 {
+    margin: 2px 0 6px 0;
+
+    padding-left: 55px;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+
+    font-weight: 700;
+
+    color: #334155;
+}
+
+
+/* REPORTING PERIOD */
+
+.paper-period {
+    display: inline-block;
+
+    margin-top: 6px;
+
+    padding: 4px 14px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 4px;
+
+    background: #f8fafc;
+
+    font-size: 8px;
+
+    color: #64748b;
+}
+
+.paper-period strong {
+    color: #2563eb;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.paper-table {
+    width: 100%;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 3px;
+
+    overflow: hidden;
+}
+
+
+/* ROW */
+
+.paper-row {
+    display: grid;
+
+    grid-template-columns: 22px 36% 1fr;
+
+    min-height: 25px;
+
+    border-bottom: 1px solid #e7ebef;
+
+    font-size: 7.5px;
+
+    line-height: 1.45;
+}
+
+.paper-row:last-child {
+    border-bottom: none;
+}
+
+
+/* NUMBER */
+
+.paper-number {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 6px 2px;
+
+    background: #f8fafc;
+
+    border-right: 1px solid #dbe2ea;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    color: #64748b;
+}
+
+
+/* QUESTION */
+
+.paper-label {
+    display: flex;
+
+    align-items: center;
+
+    padding: 6px 7px;
+
+    background: #fbfcfd;
+
+    border-right: 1px solid #dbe2ea;
+    border-left: 1px solid #e7ebef;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+
+    font-weight: 700;
+
+    color: #475569;
+}
+
+
+/* ANSWER */
+
+.paper-value {
+    display: flex;
+
+    align-items: center;
+
+    padding: 6px 7px;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    font-weight: 400;
+
+    color: #111827;
+
+    border-left: 1px solid #e7ebef;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   SPECIAL LONG TEXT ROWS
+   ========================================================= */
+
+#previewSpecialInfo,
+#previewDifficulty,
+#previewPresentAddress,
+#previewContactAddress {
+    align-items: flex-start;
+
+    white-space: pre-line;
+
+    min-height: 38px;
+}
+
+
+/* =========================================================
+   SIGNATURE / FOOTER AREA
+   ========================================================= */
+
+.paper-footer {
+    margin-top: 18px;
+
+    min-height: 62px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    padding: 0 4px 4px;
+
+    font-size: 7px;
+
+    color: #64748b;
+}
+
+
+/* DATE */
+
+.paper-footer > div:first-child {
+    padding-bottom: 8px;
+
+    font-size: 10px;
+
+    color: #64748b;
+}
+
+
+/* SIGNATURE */
+
+.signature-area {
+    width: 85px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    text-align: center;
+}
+
+
+/* SIGNATURE IMAGE */
+
+.signature-image-box {
+    width: 85px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    margin-bottom: 3px;
+}
+
+.signature-image-box img {
+    max-width: 78px;
+
+    max-height: 29px;
+
+    object-fit: contain;
+
+    display: none;
+}
+
+
+/* SIGNATURE LINE */
+
+.signature-line {
+    width: 85px;
+
+    border-top: 1px solid #64748b;
+
+    margin-top: 2px;
+
+    margin-bottom: 3px;
+}
+
+
+/* SIGNATURE TEXT */
+
+.signature-area > span {
+    font-size: 9px;
+
+    color: #64748b;
+}
+
+
+/* =========================================================
+   ORGANIZATION FOOTER
+   ========================================================= */
+
+.paper::after {
+    content: "";
+
+    display: block;
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 8px;
+
+    background: #e2e8f0;
+}
+
+
+/*
+   IMPORTANT:
+   Actual footer generated by JS
+   is positioned visually through PDF.
+   Live preview-এর জন্য নিচের footer styling
+   ব্যবহার হবে যদি HTML footer থাকে.
+*/
+
+
+.pdf-footer {
+    margin-top: 6px;
+
+    padding-top: 5px;
+
+    border-top: 1px solid #e2e8f0;
+
+    text-align: center;
+
+    font-family:
+        "Noto Sans Bengali",
+        sans-serif;
+
+    color: #64748b;
+}
+
+
+/* ORGANIZATION */
+
+.pdf-footer .org-name {
+    font-size: 8.5px;
+
+    font-weight: 800;
+
+    color: #334155;
+
+    margin-bottom: 2px;
+}
+
+
+/* ADDRESS */
+
+.pdf-footer .address {
+    font-size: 7px;
+
+    line-height: 1.4;
+}
+
+
+/* CONTACT */
+
+.pdf-footer .contact {
+    font-size: 7px;
+
+    line-height: 1.4;
+
+    margin-top: 1px;
+}
+
+
+/* EMAIL */
+
+.pdf-footer .email {
+    font-size: 7px;
+
+    line-height: 1.4;
+
+    word-break: break-word;
+}
+
+
+/* DEVELOPED BY */
+
+.pdf-footer .developed {
+    margin-top: 5px;
+
+    padding-top: 4px;
+
+    border-top: 1px solid #f1f5f9;
+
+    font-size: 6.5px;
+
+    color: #94a3b8;
+}
+
+.pdf-footer .developed strong {
+    color: #2563eb;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   RESPONSIVE PREVIEW
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .paper {
+        transform-origin: top center;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .preview-card {
+        padding: 10px;
+    }
+
+    .paper {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 25px 15px;
+    }
+
+    .paper-row {
+        grid-template-columns:
+            25px
+            35%
+            1fr;
+    }
+
+    .paper-label {
+        font-size: 10px;
+    }
+
+    .paper-value {
+        font-size: 10px;
+    }
+
+    .paper-header h2 {
+        font-size: 15px;
+    }
+
+    .paper-logo-image {
+        width: 40px;
+        height: 40px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .paper-row {
+        grid-template-columns:
+            24px
+            38%
+            1fr;
+    }
+
+    .paper-label,
+    .paper-value {
+        font-size: 9px;
+
+        padding: 5px;
+    }
+
+    .paper-header h2 {
+        font-size: 13px;
+    }
+
+    .paper-header h3 {
+        font-size: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status {
+    max-width: 1250px;
+
+    margin: 16px auto 0;
+
+    min-height: 25px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+    body {
+        background: white;
+
+        padding: 0;
+    }
+
+    .header,
+    .form-card,
+    .preview-top,
+    .status {
+        display: none !important;
+    }
+
+    .wrapper {
+        display: block;
+
+        max-width: none;
+    }
+
+    .preview-card {
+        display: block;
+
+        padding: 0;
+
+        background: white;
+
+        position: static;
+
+        box-shadow: none;
+    }
+
+    .paper {
+        width: 210mm;
+
+        height: 297mm;
+
+        max-height: 297mm;
+
+        aspect-ratio: auto;
+
+        padding: 18mm;
+
+        border-radius: 0;
+
+        box-shadow: none;
+
+        overflow: hidden;
+    }
+
+    @page {
+        size: A4 portrait;
+
+        margin: 0;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-card {
+        position: static;
+    }
+
+    .paper {
+        max-width: 650px;
+
+        margin: auto;
+
+        min-height: 0;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 18px 10px;
+    }
+
+    .header {
+        margin-bottom: 18px;
+    }
+
+    .brand-text h2 {
+        font-size: 15px;
+    }
+
+    .brand-text span {
+        font-size: 10px;
+    }
+
+    .brand-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .secure {
+        display: none;
+    }
+
+    .form-card {
+        padding: 21px 16px;
+    }
+
+    .form-heading h1 {
+        font-size: 22px;
+    }
+
+    .radio-group,
+    .sub-grid,
+    .sub-grid.three,
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .allowance-row {
+        grid-template-columns: 35px 1fr;
+    }
+
+    .allowance-row input:last-child {
+        grid-column: 2;
+    }
+
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-card {
+        display: none;
+    }
+}
+
+
+/* =====================================================
+   WEBSITE FOOTER
+===================================================== */
+
+.site-footer {
+    width: 100%;
+    margin-top: 30px;
+    padding: 22px 20px 18px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.footer-contact {
+    margin-bottom: 8px;
+}
+
+.footer-contact strong {
+    color: #1e293b;
+    font-size: 14px;
+}
+
+.footer-developed {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+.footer-developed strong {
+    color: #2563eb;
+    font-weight: 700;
+}
+
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        font-size: 11px;
+        padding: 18px 12px;
+    }
+
+    .footer-contact strong {
+        font-size: 12px;
+    }
+
+}
