@@ -62,6 +62,9 @@ const signatureInput =
 const previewSignature =
     document.getElementById("previewSignature");
 
+const resultSheetInput =
+    document.getElementById("resultSheet");
+
 
 /* =========================================================
    GET VALUE
@@ -704,6 +707,53 @@ function validateForm() {
     }
 
 
+    /* RESULT SHEET (OPTIONAL) */
+
+    const resultSheetFile =
+        resultSheetInput?.files?.[0];
+
+
+    if (resultSheetFile) {
+
+        if (
+            resultSheetFile.size >
+            5 * 1024 * 1024
+        ) {
+
+            alert(
+                "রেজাল্ট শীট ফাইল 5MB-এর কম হতে হবে।"
+            );
+
+            return false;
+
+        }
+
+
+        const allowedTypes = [
+            "image/png",
+            "image/jpeg",
+            "image/jpg",
+            "application/pdf"
+        ];
+
+
+        if (
+            !allowedTypes.includes(
+                resultSheetFile.type
+            )
+        ) {
+
+            alert(
+                "রেজাল্ট শীট হিসেবে শুধুমাত্র PNG, JPG অথবা PDF ফাইল upload করুন।"
+            );
+
+            return false;
+
+        }
+
+    }
+
+
     return true;
 
 }
@@ -781,87 +831,160 @@ function getPDFFileName() {
 
 
 /* =========================================================
-   ADD PDF FOOTER — 2 CLEAN LINES, 5pt, NOTHING CUT OFF
+   BUILD FOOTER IMAGE
+   =====================================================
+
+   আগে jsPDF-এর নিজের ফন্ট (helvetica) দিয়ে বাংলা টেক্সট
+   আঁকা হতো, যেটাতে Bangla glyph সাপোর্ট নেই — ফলে PDF-এ
+   অক্ষরগুলো ভাঙাচোরা (mojibake) দেখাতো।
+
+   এখন ফুটারটাও বাকি ডকুমেন্টের মতোই html2canvas দিয়ে
+   ব্রাউজারে রেন্ডার করে ছবি হিসেবে PDF-এ বসানো হয়, তাই
+   বাংলা টেক্সট সবসময় সঠিকভাবে দেখাবে। শুধু পেজ নম্বর
+   (Page X of Y) jsPDF দিয়ে আলাদাভাবে বসে, কারণ সেটা প্রতি
+   পাতায় আলাদা হয় এবং শুধু ইংরেজি সংখ্যা/অক্ষর হওয়ায়
+   কোনো সমস্যা হয় না।
    ========================================================= */
 
-function addFooter(doc, pageNumber, totalPages) {
+async function buildFooterImage(widthPx) {
 
-    const pageWidth =
-        doc.internal.pageSize.getWidth();
+    const footer =
+        document.createElement("div");
 
-    const pageHeight =
-        doc.internal.pageSize.getHeight();
+    footer.style.position =
+        "fixed";
 
-    const margin = 12;
+    footer.style.left =
+        "-100000px";
 
-    /* Two footer text lines, both safely inside the page */
-    const line1Y = pageHeight - 13;
-    const line2Y = pageHeight - 8;
+    footer.style.top =
+        "0";
+
+    footer.style.width =
+        widthPx + "px";
+
+    footer.style.boxSizing =
+        "border-box";
+
+    footer.style.background =
+        "#ffffff";
+
+    footer.style.padding =
+        "8px 0 6px";
+
+    footer.style.borderTop =
+        "1px solid #d9dde3";
+
+    footer.style.fontFamily =
+        '"Noto Sans Bengali", "Inter", sans-serif';
+
+    footer.style.textAlign =
+        "center";
 
 
-    /* -----------------------------------------------------
-       SEPARATOR LINE
-       ----------------------------------------------------- */
+    footer.innerHTML = `
+        <div style="font-size:10px; font-weight:700; color:#374151; line-height:1.6;">
+            টিসিএম বাংলাদেশ &nbsp;|&nbsp; ২৮/১ পশ্চিম মালিবাগ, ঢাকা-১২১৭ &nbsp;|&nbsp; ফোন: ০৯৬১৩৬১৫৬৬৬, ০৯৬১৩৬১৫৬৭৭
+        </div>
+        <div style="font-size:9px; color:#6b7280; line-height:1.6; margin-top:1px;">
+            ওয়েব: info@tcmbangladesh.org &nbsp;|&nbsp; ইমেইল: psks_tcm@yahoo.com, shahina@tcmbangladesh.org
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px; padding-top:5px; border-top:1px solid #f1f1f1; font-size:8px; color:#9aa2ad; font-family:'Inter',sans-serif;">
+            <span>Developed by <strong style="color:#2563eb;">Masfiq Rahman Misha</strong></span>
+            <span style="width:110px;"></span>
+        </div>
+    `;
 
-    doc.setDrawColor(220, 225, 232);
-    doc.setLineWidth(0.25);
 
-    doc.line(
-        margin,
-        line1Y - 4,
-        pageWidth - margin,
-        line1Y - 4
+    document.body.appendChild(
+        footer
     );
 
 
-    /* -----------------------------------------------------
-       LINE 1 (left) — org name + full address + phone
-       LINE 1 (right) — developed by credit
-       ----------------------------------------------------- */
-
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(5);
-    doc.setTextColor(70, 80, 95);
-
-    doc.text(
-        "টিসিএম বাংলাদেশ  |  ২৮/১ পশ্চিম মালিবাগ, ঢাকা-১২১৭  |  ফোন: ০৯৬১৩৬১৫৬৬৬, ০৯৬১৩৬১৫৬৭৭",
-        margin,
-        line1Y
+    await new Promise(
+        resolve =>
+            requestAnimationFrame(
+                resolve
+            )
     );
+
+
+    const canvas =
+        await html2canvas(
+            footer,
+            {
+
+                scale: 2,
+
+                backgroundColor:
+                    "#ffffff",
+
+                useCORS: true,
+
+                logging: false
+
+            }
+        );
+
+
+    footer.remove();
+
+
+    return canvas;
+
+}
+
+
+/* =========================================================
+   DRAW FOOTER ON A GIVEN PDF PAGE
+   ========================================================= */
+
+function drawFooterOnPage(
+
+    doc,
+    pageNumber,
+    totalPages,
+    footerImageDataUrl,
+    footerDrawHeight,
+    pageWidth,
+    pageHeight,
+    margin
+
+) {
+
+    const footerY =
+        pageHeight -
+        margin -
+        footerDrawHeight;
+
+
+    doc.addImage(
+
+        footerImageDataUrl,
+
+        "PNG",
+
+        margin,
+        footerY,
+
+        pageWidth - margin * 2,
+        footerDrawHeight
+
+    );
+
+
+    /* Page number — plain Latin/digits, safe to draw with jsPDF's
+       own font. Sits in the blank right-hand slot reserved in the
+       footer image's bottom row. */
 
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(5);
-    doc.setTextColor(145, 155, 170);
-
-    doc.text(
-        "Developed by Masfiq Rahman Misha",
-        pageWidth - margin,
-        line1Y,
-        { align: "right" }
-    );
-
-
-    /* -----------------------------------------------------
-       LINE 2 (left) — website + emails
-       LINE 2 (right) — page number
-       ----------------------------------------------------- */
-
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(5);
-    doc.setTextColor(110, 120, 135);
-
-    doc.text(
-        "ওয়েব: info@tcmbangladesh.org  |  ইমেইল: psks_tcm@yahoo.com, shahina@tcmbangladesh.org",
-        margin,
-        line2Y
-    );
-
-    doc.setTextColor(145, 155, 170);
+    doc.setFontSize(6.5);
+    doc.setTextColor(154, 162, 173);
 
     doc.text(
         `Page ${pageNumber} of ${totalPages}`,
         pageWidth - margin,
-        line2Y,
+        pageHeight - margin - 1.4,
         { align: "right" }
     );
 
@@ -1189,11 +1312,32 @@ async function generatePDF() {
 
 
     /* =====================================================
+       FOOTER IMAGE (built once, reused on every page)
+       ===================================================== */
+
+    const footerCanvas =
+        await buildFooterImage(794);
+
+    const footerImageDataUrl =
+        footerCanvas.toDataURL(
+            "image/png"
+        );
+
+    const footerDrawHeight =
+        (
+            footerCanvas.height /
+            footerCanvas.width
+        ) *
+        usableWidth;
+
+
+    /* =====================================================
        MULTI PAGE
        ===================================================== */
 
     const footerSpace =
-        22;
+        footerDrawHeight +
+        4;
 
 
     const usablePageHeight =
@@ -1343,6 +1487,114 @@ async function generatePDF() {
 
 
     /* =====================================================
+       APPEND RESULT SHEET AS AN EXTRA PDF PAGE
+       =====================================================
+
+       শুধুমাত্র ছবি (PNG/JPG) হলে PDF-এর শেষে নতুন পাতা
+       হিসেবে যুক্ত হয়। PDF ফাইল upload করা হলে সেটা
+       ব্রাউজারে merge করার জন্য আলাদা লাইব্রেরি লাগবে,
+       তাই সেক্ষেত্রে শুধু Google Sheet-এই যাবে, PDF-এ
+       যুক্ত হবে না।
+    */
+
+    const resultSheetFile =
+        resultSheetInput?.files?.[0];
+
+    if (
+        resultSheetFile &&
+        resultSheetFile.type.startsWith("image/")
+    ) {
+
+        try {
+
+            const resultSheetDataUrl =
+                await fileToDataURL(
+                    resultSheetFile
+                );
+
+            const resultImg =
+                new Image();
+
+            await new Promise(
+                (resolve, reject) => {
+
+                    resultImg.onload =
+                        resolve;
+
+                    resultImg.onerror =
+                        reject;
+
+                    resultImg.src =
+                        resultSheetDataUrl;
+
+                }
+            );
+
+            doc.addPage();
+
+            const availableHeight =
+                pageHeight -
+                margin -
+                footerSpace;
+
+            const scale =
+                Math.min(
+                    usableWidth /
+                    resultImg.width,
+
+                    availableHeight /
+                    resultImg.height
+                );
+
+            const drawW =
+                resultImg.width *
+                scale;
+
+            const drawH =
+                resultImg.height *
+                scale;
+
+            const drawX =
+                margin +
+                (usableWidth - drawW) /
+                2;
+
+            const drawY =
+                margin +
+                (availableHeight - drawH) /
+                2;
+
+            doc.addImage(
+
+                resultSheetDataUrl,
+
+                resultSheetFile.type.includes("png")
+                    ? "PNG"
+                    : "JPEG",
+
+                drawX,
+                drawY,
+
+                drawW,
+                drawH
+
+            );
+
+        }
+
+        catch (err) {
+
+            console.warn(
+                "Result sheet could not be added to PDF:",
+                err
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
        ADD FOOTER TO ALL PAGES
        ===================================================== */
 
@@ -1357,10 +1609,17 @@ async function generatePDF() {
 
         doc.setPage(i);
 
-        addFooter(
+        drawFooterOnPage(
+
             doc,
             i,
-            totalPages
+            totalPages,
+            footerImageDataUrl,
+            footerDrawHeight,
+            pageWidth,
+            pageHeight,
+            margin
+
         );
 
     }
@@ -1494,6 +1753,37 @@ if (printBtn) {
 async function saveToGoogleSheet(
     pdfDataUri
 ) {
+
+    /* RESULT SHEET (OPTIONAL) — read as base64 if attached */
+
+    const resultSheetFile =
+        resultSheetInput?.files?.[0];
+
+    let resultSheetDataUri =
+        "";
+
+    if (resultSheetFile) {
+
+        try {
+
+            resultSheetDataUri =
+                await fileToDataURL(
+                    resultSheetFile
+                );
+
+        }
+
+        catch (err) {
+
+            console.warn(
+                "Result sheet could not be read:",
+                err
+            );
+
+        }
+
+    }
+
 
     const data = {
 
@@ -1665,6 +1955,17 @@ async function saveToGoogleSheet(
 
         submission_date:
             getCurrentDate(),
+
+
+        /* RESULT SHEET */
+
+        result_sheet:
+            resultSheetDataUri,
+
+        result_sheet_filename:
+            resultSheetFile
+                ? resultSheetFile.name
+                : "",
 
 
         /* PDF */
